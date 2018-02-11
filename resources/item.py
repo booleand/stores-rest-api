@@ -36,7 +36,7 @@ class Item(Resource):
         try:
             item.save_to_db()
         except:
-            print "Unexpected error:", sys.exc_info()[0] # DEBUG statement
+            print("Unexpected error:", sys.exc_info()[0]) # DEBUG statement
             return {'message': "An error occurred inserting the item"}, 500
 
         return item.json(), 201
