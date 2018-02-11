@@ -1,3 +1,5 @@
+import sys
+
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
 from models.item import ItemModel
@@ -34,6 +36,7 @@ class Item(Resource):
         try:
             item.save_to_db()
         except:
+            print "Unexpected error:", sys.exc_info()[0] # DEBUG statement
             return {'message': "An error occurred inserting the item"}, 500
 
         return item.json(), 201
